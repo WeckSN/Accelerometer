@@ -1,27 +1,29 @@
 library(dplyr)
 
+##### change your working directory to the directory where the UCI HAR Dataset is
+setwd("C:/Users/Stefanie/Dropbox/Coursera/UCI HAR Dataset")
 
 ##### STEP 1 #####
 
 # read in variables common to both data sets
 #### I'm doing this here for brevity instead of in step 4
 
-features <- read.table("C:/Users/Stefanie/Dropbox/Coursera/UCI HAR Dataset/features.txt")
+features <- read.table("features.txt")
 
 
 # re-assemble full test data set ###
 
 # read in main data, already name the colums appropriately using col.names
-test <- read.table("C:/Users/Stefanie/Dropbox/Coursera/UCI HAR Dataset/test/X_test.txt", col.names = features$V2)
-test$subj <- as.factor(scan("C:/Users/Stefanie/Dropbox/Coursera/UCI HAR Dataset/test/subject_test.txt"))
-test$activity_num <- scan("C:/Users/Stefanie/Dropbox/Coursera/UCI HAR Dataset/test/y_test.txt")
+test <- read.table("test/X_test.txt", col.names = features$V2)
+test$subj <- as.factor(scan("test/subject_test.txt"))
+test$activity_num <- scan("test/y_test.txt")
 
 
 # re-assemble full train data set ###
 
-train <- read.table("C:/Users/Stefanie/Dropbox/Coursera/UCI HAR Dataset/train/X_train.txt", col.names = features$V2)
-train$subj <- as.factor(scan("C:/Users/Stefanie/Dropbox/Coursera/UCI HAR Dataset/train/subject_train.txt"))
-train$activity_num <- scan("C:/Users/Stefanie/Dropbox/Coursera/UCI HAR Dataset/train/y_train.txt")
+train <- read.table("train/X_train.txt", col.names = features$V2)
+train$subj <- as.factor(scan("train/subject_train.txt"))
+train$activity_num <- scan("train/y_train.txt")
 
 # combine test and training data set
 
@@ -44,7 +46,7 @@ df_short <- select(df, matches("mean|std|activity_num|subj"))
 
 # I'm reading in the data set containing the actual labels of the activities (WALKING etc)
 
-activity_labels <- read.table("C:/Users/Stefanie/Dropbox/Coursera/UCI HAR Dataset/activity_labels.txt",
+activity_labels <- read.table("activity_labels.txt",
                               col.names = c("activity_num", "activity_label"))
 
 
@@ -66,4 +68,5 @@ tidy
 
 ### save data set so I can upload it to Github
 
-write.csv(tidy, file = "C:/Users/Stefanie/Dropbox/Coursera/Course4Assignment/tidy.csv")
+write.table(tidy, file = "C:/Users/Stefanie/Dropbox/Coursera/Course4Assignment/tidy.txt", row.names = FALSE)
+
