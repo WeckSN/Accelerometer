@@ -1,8 +1,3 @@
----
-title: "Coursera Assignment ReadMe"
-output: html_document
----
-
 ## Step 1
 
 As a first step I read all the features (tBodyAcc-mean()-X, ...) as a data frame. I know that the second column (V2) of this data frame are the descriptive names of the features, and that those will be the column names for the big data set.
@@ -16,11 +11,11 @@ Then, I re-assemble the train and test data set in the following way, here illus
 Once this is done for both train and test I rbind them together. That is, I just add all rows of train to test, since the columns (and their names!) are the same.
 
 
-##STEP 2
+## STEP 2
 
 I select only those columns that contain the string "mean" or "std", but I also select "activity_num" and "subj" because I need those for my groupings later.
 
-##STEP 3
+## STEP 3
 I already performed this step during step 1, when I used the features labels (column two of the feature.txt data frame) as the col.names for the train and test data frames.
 
 ## STEP 4
