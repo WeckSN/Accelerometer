@@ -38,5 +38,5 @@ Lastly, I print the tidy data set for a sanity check.
 
 ## STEP 6
 
-As the very last step I save the newly created, tidy data set as a csv file.
+As the very last step I save the newly created, tidy data set as a txt file.
 
