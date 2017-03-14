@@ -27,8 +27,6 @@ train$activity_num <- scan("C:/Users/Stefanie/Dropbox/Coursera/UCI HAR Dataset/t
 
 df <- rbind(test, train)
 
-#rm(list=setdiff(ls(), "df"))  # remove all other files but df 
-
 
 ##### STEP 2 #####
 
@@ -37,8 +35,9 @@ df_short <- select(df, matches("mean|std|activity_num|subj"))
 
 ##### STEP 3 ####
 
-### PLease note that I already added the column names (i.e., "descriptive activity names") in step 1. 
-### I thought that was much easer than matching the names later
+### Please note that I already added the column names (i.e., "descriptive activity names") in step 1
+### using col.names in the read.table function. I thought that was much easier than matching the
+### names later.
 
 
 #### STEP 4 #####
@@ -64,3 +63,7 @@ tidy <- df3  %>%
     summarise_each(funs(mean))
 tidy
 
+
+### save data set so I can upload it to Github
+
+write.csv(tidy, file = "C:/Users/Stefanie/Dropbox/Coursera/Course4Assignment/tidy.csv")
